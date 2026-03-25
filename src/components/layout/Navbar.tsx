@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Heart, ShoppingBag, Menu, X } from "lucide-react";
+import { useCartStore } from "@/lib/store/cart";
 
 /* ───────────────────────── NAV DATA ───────────────────────── */
 
@@ -235,8 +235,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [cartCount] = useState(3);
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { totalItems, openCart } = useCartStore();
+  const cartCount = totalItems();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -321,7 +322,7 @@ export default function Navbar() {
             <button aria-label="Wishlist" className="hidden sm:block text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]">
               <Heart size={19} strokeWidth={1.5} />
             </button>
-            <button aria-label="Cart" className="relative text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]">
+            <button aria-label="Cart" onClick={openCart} className="relative text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]">
               <ShoppingBag size={19} strokeWidth={1.5} />
               {cartCount > 0 && (
                 <motion.span
