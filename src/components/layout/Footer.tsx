@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-/* ─── Social icon SVGs (not in lucide, so inline) ─── */
-
 const InstagramIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -28,8 +26,6 @@ const PinterestIcon = () => (
   </svg>
 );
 
-/* ─── Data ─── */
-
 const shopLinks = [
   { label: "Men", href: "/men" },
   { label: "Women", href: "/women" },
@@ -46,6 +42,14 @@ const helpLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const companyLinks = [
+  { label: "Our Story", href: "/about" },
+  { label: "Sustainability", href: "/sustainability" },
+  { label: "Careers", href: "/careers" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+];
+
 const socials = [
   { label: "Instagram", icon: InstagramIcon, href: "https://instagram.com" },
   { label: "Facebook", icon: FacebookIcon, href: "https://facebook.com" },
@@ -54,8 +58,6 @@ const socials = [
 ];
 
 const paymentMethods = ["Visa", "Mastercard", "EasyPaisa", "JazzCash"];
-
-/* ─── Component ─── */
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -66,8 +68,8 @@ export default function Footer() {
       <div className="h-[1px] bg-[var(--color-accent)]" />
 
       {/* Main grid */}
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:px-24">
-        <div className="grid grid-cols-2 gap-10 md:gap-12 lg:grid-cols-4">
+      <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
+        <div className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-12">
 
           {/* ── Col 1: Brand ── */}
           <div className="col-span-2 lg:col-span-1">
@@ -82,7 +84,7 @@ export default function Footer() {
             </p>
 
             {/* Social icons */}
-            <div className="mt-7 flex items-center gap-4">
+            <div className="mt-8 flex items-center gap-4">
               {socials.map(({ label, icon: Icon, href }) => (
                 <a
                   key={label}
@@ -90,7 +92,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-[var(--color-gray)] transition-colors hover:text-[var(--color-accent)]"
+                  className="flex h-9 w-9 items-center justify-center text-[var(--color-gray)] transition-colors hover:text-[var(--color-accent)]"
                 >
                   <Icon />
                 </a>
@@ -100,15 +102,15 @@ export default function Footer() {
 
           {/* ── Col 2: Shop ── */}
           <div>
-            <h4 className="mb-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
+            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
               Shop
             </h4>
-            <ul className="space-y-3.5">
+            <ul className="space-y-3">
               {shopLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -119,15 +121,15 @@ export default function Footer() {
 
           {/* ── Col 3: Help ── */}
           <div>
-            <h4 className="mb-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
+            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
               Help
             </h4>
-            <ul className="space-y-3.5">
+            <ul className="space-y-3">
               {helpLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -136,23 +138,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 4: Legal / Extra ── */}
+          {/* ── Col 4: Company ── */}
           <div>
-            <h4 className="mb-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[var(--color-accent)]">
+            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
               Company
             </h4>
-            <ul className="space-y-3.5">
-              {[
-                { label: "Our Story", href: "/about" },
-                { label: "Sustainability", href: "/sustainability" },
-                { label: "Careers", href: "/careers" },
-                { label: "Privacy Policy", href: "/privacy" },
-                { label: "Terms of Service", href: "/terms" },
-              ].map(({ label, href }) => (
+            <ul className="space-y-3">
+              {companyLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -164,14 +160,11 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-white/[0.06]">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-6 md:flex-row md:justify-between md:px-12 lg:px-24">
-          {/* Copyright */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 py-4 md:flex-row md:justify-between lg:px-12">
           <p className="text-[11px] text-[var(--color-gray)]">
             &copy; {year} Drift Wears. All rights reserved.
           </p>
-
-          {/* Payment badges */}
           <div className="flex items-center gap-2">
             {paymentMethods.map((method) => (
               <span

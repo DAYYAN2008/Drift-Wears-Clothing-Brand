@@ -41,7 +41,8 @@ export default function AddToCartButton({
   };
 
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.97 }}
       onClick={handleAdd}
       aria-label="Add to bag"
       className={`relative inline-flex h-12 items-center justify-center gap-2.5 overflow-hidden bg-[var(--color-accent)] px-8 text-[12px] font-bold uppercase tracking-[0.2em] text-[var(--color-black)] transition-opacity hover:opacity-85 disabled:cursor-not-allowed ${className}`}
@@ -73,6 +74,6 @@ export default function AddToCartButton({
           </motion.span>
         )}
       </AnimatePresence>
-    </button>
+    </motion.button>
   );
 }

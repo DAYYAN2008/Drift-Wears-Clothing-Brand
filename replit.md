@@ -46,3 +46,19 @@ public/                   # Static assets
 ## Replit Configuration
 - Dev server runs on port 5000, bound to `0.0.0.0` for Replit preview compatibility
 - Workflow: "Start application" runs `npm run dev`
+- `next.config.ts`: `allowedDevOrigins` for Replit preview + image `remotePatterns` for picsum.photos/fastly.picsum.photos
+
+## Key Design Decisions
+- **Images**: `next/image` with `fill` + `priority` on Hero; `fill` + lazy on products/editorial. picsum.photos as placeholder CDN.
+- **Animations**: `FadeInWhenVisible` reusable component for scroll-triggered fade-up; `whileTap={{ scale: 0.97 }}` on all interactive buttons/links.
+- **Cart z-index layers**: Navbar z-50, overlay z-[70], CartDrawer z-[80].
+- **Section spacing**: `py-16 md:py-24` across all sections for consistent rhythm.
+- **Product cards**: `aspect-[3/4]` image ratio, `fill` strategy, `group-hover:scale-105` zoom.
+- **AddToCartButton**: `Check` icon success state with AnimatePresence, 2s reset, opens cart on add.
+- **CartDrawer thumbnails**: `w-20 h-24` per spec, trash-icon remove, quantity stepper (min 44px touch).
+- **Footer bottom bar**: `py-4` compact, payment badges as inline spans.
+- **MarqueeStrip**: `pause-on-hover`, `letter-spacing: 0.35em`, 32s scroll duration.
+- **Newsletter grain**: SVG fractalNoise `::before` pseudo-element, dark `#0d0d0d` bg.
+- **Body**: `overflow-x-hidden` to prevent horizontal scroll from parallax/animations.
+- **SEO**: Full `metadata` export in both `layout.tsx` and `page.tsx` with OG/Twitter cards.
+- **No `ssr: false` dynamic imports** in App Router Server Components — client sections import directly (they carry their own `"use client"` boundaries).

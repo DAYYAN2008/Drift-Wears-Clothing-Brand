@@ -2,14 +2,14 @@
   width: 100%;
   background-color: #0a0a0a;
   overflow: hidden;
-  padding: 14px 0;
+  padding: 16px 0;
   cursor: default;
 }
 
 .track {
   display: flex;
   width: max-content;
-  animation: scroll 28s linear infinite;
+  animation: scroll 32s linear infinite;
 }
 
 .strip:hover .track {
@@ -19,11 +19,11 @@
 .text {
   white-space: nowrap;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  padding-right: 0;
+  padding-right: 64px;
 }
 
 @keyframes scroll {
