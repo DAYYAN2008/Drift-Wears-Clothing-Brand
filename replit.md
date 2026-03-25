@@ -12,17 +12,28 @@ A Next.js e-commerce/fashion web application migrated from Vercel to Replit.
 ## Project Structure
 ```
 src/
-  app/           # Next.js App Router pages & layouts
-    (routes)/    # Route groups
-    layoutsections/
+  app/                    # Next.js App Router pages & layouts
+    (routes)/             # Route groups
     globals.css
-    layout.tsx
+    layout.tsx            # Root layout: AnnouncementBar + Navbar + CartDrawer
     page.tsx
-    mock-data.ts
-  components/    # Shared UI components
+  components/
+    layout/
+      AnnouncementBar.tsx
+      Navbar.tsx          # Sticky nav, mega dropdowns, reads cart count from Zustand
+      CartDrawer.tsx      # Sliding cart drawer (Framer Motion, z-[80])
+    sections/
+      Hero.tsx            # Parallax hero
+      MarqueeStrip.tsx    # Infinite CSS marquee
+      FeaturedProducts.tsx # Product grid with AddToCartButton
+      Editorial.tsx       # 2-col editorial section
     ui/
-  lib/           # Utility/helper modules
-public/          # Static assets
+      AddToCartButton.tsx # Zustand addItem + openCart, animated state
+  lib/
+    store/
+      cart.ts             # Zustand cart store (persisted to localStorage)
+    mock-data.ts          # Product catalogue (12 items)
+public/                   # Static assets
 ```
 
 ## Running the App
