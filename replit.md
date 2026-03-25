@@ -22,11 +22,13 @@ src/
       AnnouncementBar.tsx
       Navbar.tsx          # Sticky nav, mega dropdowns, reads cart count from Zustand
       CartDrawer.tsx      # Sliding cart drawer (Framer Motion, z-[80])
+      Footer.tsx          # 4-col footer with social icons + payment badges
     sections/
       Hero.tsx            # Parallax hero
       MarqueeStrip.tsx    # Infinite CSS marquee
       FeaturedProducts.tsx # Product grid with AddToCartButton
       Editorial.tsx       # 2-col editorial section
+      Newsletter.tsx      # Email signup with grain texture + success animation
     ui/
       AddToCartButton.tsx # Zustand addItem + openCart, animated state
   lib/
