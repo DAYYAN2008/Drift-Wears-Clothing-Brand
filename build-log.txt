@@ -1,0 +1,63 @@
+▲ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./src/lib/store/cart.ts:1:1
+Module not found: Can't resolve 'zustand'
+[31m[1m>[0m [90m1 |[0m [36mimport[0m { create } [36mfrom[0m [32m"zustand"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m2 |[0m [36mimport[0m { persist } [36mfrom[0m [32m"zustand/middleware"[0m;
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36minterface[0m [33mCartItem[0m {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/store/cart.ts [Client Component Browser]
+    ./src/components/layout/CartDrawer.tsx [Client Component Browser]
+    ./src/components/layout/CartDrawer.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/store/cart.ts [Client Component SSR]
+    ./src/components/layout/CartDrawer.tsx [Client Component SSR]
+    ./src/components/layout/CartDrawer.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/lib/store/cart.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  [90m1 |[0m [36mimport[0m { create } [36mfrom[0m [32m"zustand"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m { persist } [36mfrom[0m [32m"zustand/middleware"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36minterface[0m [33mCartItem[0m {
+  [90m5 |[0m   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/store/cart.ts [Client Component Browser]
+    ./src/components/layout/CartDrawer.tsx [Client Component Browser]
+    ./src/components/layout/CartDrawer.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/store/cart.ts [Client Component SSR]
+    ./src/components/layout/CartDrawer.tsx [Client Component SSR]
+    ./src/components/layout/CartDrawer.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/lib/store/cart.ts:1:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/lib/store/cart.ts:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

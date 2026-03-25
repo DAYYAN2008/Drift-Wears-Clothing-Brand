@@ -69,7 +69,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/men-campaign/600/800",
+      campaignImage: "/images/products/tracksuits/Pic-1.0.png",
       campaignLabel: "Minimals Spring '26",
       campaignHref: "/men/minimals",
     },
@@ -108,7 +108,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/women-campaign/600/800",
+      campaignImage: "/images/products/trousers/Pic-1.0.png",
       campaignLabel: "New Season Looks",
       campaignHref: "/women/new-arrivals",
     },
@@ -143,7 +143,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/arrivals-campaign/600/800",
+      campaignImage: "/images/products/shirts/Pic-1.0.png",
       campaignLabel: "Just Dropped",
       campaignHref: "/new-arrivals",
     },
@@ -179,7 +179,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/sale-campaign/600/800",
+      campaignImage: "/images/products/trousers/Pic-2.1.png",
       campaignLabel: "Up to 70% off",
       campaignHref: "/sale",
     },
@@ -278,9 +278,17 @@ export default function Navbar() {
           {/* ─── Logo ─── */}
           <Link
             href="/"
-            className="relative z-10 text-base font-bold uppercase tracking-[0.35em] text-[var(--color-off-white)] transition-opacity hover:opacity-75"
+            className="flex flex-col items-center text-center transition-opacity hover:opacity-75"
           >
-            Drift&nbsp;Wears
+            <span 
+              className="text-lg font-bold uppercase tracking-[0.45em] leading-none text-[var(--color-off-white)]"
+              style={{ fontFamily: "'ITC Fenice Std Regular', Georgia, serif" }}
+            >
+              Drift&nbsp;Wears
+            </span>
+            <span className="mt-1 text-[7px] font-medium uppercase tracking-[0.5em] text-[var(--color-accent)]">
+              Let your style drift
+            </span>
           </Link>
 
           {/* ─── Desktop Nav Links ─── */}
@@ -446,9 +454,17 @@ export default function Navbar() {
             >
               {/* Header */}
               <div className="flex h-[68px] items-center justify-between border-b border-white/[0.06] px-6">
-                <span className="text-sm font-bold uppercase tracking-[0.35em] text-[var(--color-off-white)]">
-                  Drift&nbsp;Wears
-                </span>
+                <div className="flex flex-col items-center">
+                  <span 
+                    className="text-base font-bold uppercase tracking-[0.4em] leading-none text-[var(--color-off-white)]"
+                    style={{ fontFamily: "'ITC Fenice Std Regular', Georgia, serif" }}
+                  >
+                    Drift&nbsp;Wears
+                  </span>
+                  <span className="mt-0.5 text-[6px] font-medium uppercase tracking-[0.4em] text-[var(--color-accent)]">
+                    Let your style drift
+                  </span>
+                </div>
                 <button aria-label="Close menu" onClick={closeMobile} className="text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]">
                   <X size={22} strokeWidth={1.5} />
                 </button>

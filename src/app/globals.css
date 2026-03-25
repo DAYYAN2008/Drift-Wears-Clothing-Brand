@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'ITC Fenice Std Regular';
+  src: url('/fonts/itc-fenice.otf') format('opentype'),
+       url('/fonts/itc-fenice.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Brand Colors */
   --color-black: #0a0a0a;

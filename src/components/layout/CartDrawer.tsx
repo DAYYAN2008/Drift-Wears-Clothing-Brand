@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
-import { useCartStore } from "@/lib/store/cart";
+import { useCartStore, type CartItem } from "@/lib/store/cart";
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -98,19 +99,19 @@ export default function CartDrawer() {
                 </div>
               ) : (
                 <ul className="divide-y divide-white/[0.06]">
-                  {items.map((item) => (
+                  {items.map((item: CartItem) => (
                     <li
                       key={`${item.id}__${item.size}__${item.color}`}
                       className="flex gap-4 px-6 py-4"
                     >
                       {/* Thumbnail — w-20 h-24 per spec */}
                       <div className="h-24 w-20 shrink-0 overflow-hidden rounded-sm bg-white/5">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.image || `https://picsum.photos/seed/${item.id}/150/200?grayscale`}
-                          alt={item.name}
+                        <Image
+                          src={item.image || "/images/products/shirts/Pic-1.0.png"}
+                          alt={`${item.name} — men's item by Drift Wears`}
+                          width={160}
+                          height={213}
                           className="h-full w-full object-cover"
-                          loading="lazy"
                         />
                       </div>
 
@@ -165,7 +166,7 @@ export default function CartDrawer() {
 
                           {/* Line price */}
                           <span className="text-[13px] font-semibold text-[var(--color-off-white)]">
-                            ₹{(item.price * item.quantity).toLocaleString()}
+                            Rs. {(item.price * item.quantity).toLocaleString()}
                           </span>
                         </div>
                       </div>
@@ -185,7 +186,7 @@ export default function CartDrawer() {
                       Subtotal
                     </span>
                     <span className="text-lg font-semibold text-[var(--color-off-white)]">
-                      ₹{subtotal.toLocaleString()}
+                      Rs. {subtotal.toLocaleString()}
                     </span>
                   </div>
                   <p className="text-[11px] leading-relaxed text-[var(--color-gray)]">

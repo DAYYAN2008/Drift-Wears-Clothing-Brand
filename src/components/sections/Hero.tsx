@@ -41,7 +41,7 @@ export default function Hero() {
         style={{ y: bgY, position: "absolute", top: "-10%", left: 0, right: 0, height: "120%" }}
       >
         <Image
-          src="https://picsum.photos/1920/1080?grayscale"
+          src="/images/hero/hero_section_image.png"
           alt="Hero background"
           width={1920}
           height={1080}
@@ -80,7 +80,7 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           variants={fadeUp}
-          className="mb-10 text-sm leading-relaxed tracking-[0.18em] text-[var(--color-gray)] md:text-base"
+          className="mb-10 text-sm font-semibold leading-relaxed tracking-[0.18em] text-black md:text-base"
         >
           New collection — live now
         </motion.p>

@@ -6,7 +6,7 @@ import AddToCartButton from "@/components/ui/AddToCartButton";
 import FadeInWhenVisible from "@/components/ui/FadeInWhenVisible";
 import { products } from "@/lib/mock-data";
 
-const featured = products.slice(0, 4);
+const featured = products.filter((p) => ["1", "5", "9", "6"].includes(p.id));
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -60,20 +60,27 @@ export default function FeaturedProducts() {
               {/* Image */}
               <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e4df]">
                 <Image
-                  src={`https://picsum.photos/seed/${product.id}/480/640?grayscale`}
-                  alt={product.name}
+                  src={product.images[0]}
+                  alt={`${product.name} — men's ${product.category} by Drift Wears`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
                 />
+                <Image
+                  src={product.images[1]}
+                  alt={`${product.name} — alternate view`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="absolute inset-0 object-cover opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+                />
                 {/* Badges */}
                 <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-                  {product.isNew && (
+                  {product.tags.includes("new") && (
                     <span className="bg-[var(--color-black)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white">
                       New
                     </span>
                   )}
-                  {product.isBestseller && (
+                  {product.tags.includes("bestseller") && (
                     <span className="bg-[var(--color-accent)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-[var(--color-black)]">
                       Bestseller
                     </span>
@@ -91,7 +98,7 @@ export default function FeaturedProducts() {
                     {product.name}
                   </h3>
                   <p className="text-sm font-semibold text-[var(--color-black)]">
-                    ₹{product.price.toLocaleString()}
+                    Rs. {product.price.toLocaleString()}
                   </p>
                 </div>
 
