@@ -28,7 +28,6 @@ const PinterestIcon = () => (
 
 const shopLinks = [
   { label: "Men", href: "/men" },
-  { label: "Women", href: "/women" },
   { label: "New Arrivals", href: "/new-arrivals" },
   { label: "Sale", href: "/sale" },
   { label: "Accessories", href: "/accessories" },

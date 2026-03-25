@@ -146,6 +146,6 @@ export const products: Product[] = [
     tags: ["new"],
     sizes: ["S", "M", "L", "XL"],
     colors: ["#f5f0e8", "#9ca3af", "#374151"],
-    images: ["/images/products/shirts/Pic%201.1.png", "/images/products/shirts/Pic%201.0.png"],
+    images: ["/images/products/shirts/Pic-1.1.png", "/images/products/shirts/Pic-1.0.png"],
   },
 ];

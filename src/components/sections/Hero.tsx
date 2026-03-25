@@ -98,15 +98,6 @@ export default function Hero() {
               Shop Men
             </Link>
           </motion.div>
-
-          <motion.div whileTap={{ scale: 0.97 }}>
-            <Link
-              href="/women"
-              className="inline-flex h-12 min-w-[160px] items-center justify-center border border-white/40 bg-transparent px-8 py-3.5 text-[12px] font-bold uppercase tracking-[0.2em] text-[var(--color-off-white)] transition-all hover:border-white hover:bg-white/5"
-            >
-              Shop Women
-            </Link>
-          </motion.div>
         </motion.div>
       </motion.div>
 

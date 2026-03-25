@@ -7,7 +7,7 @@ import Editorial from "@/components/sections/Editorial";
 export const metadata: Metadata = {
   title: "Drift Wears — Premium Streetwear",
   description:
-    "Shop the latest streetwear drops from Drift Wears. New collections, limited editions, and style-defining essentials for men and women.",
+    "Shop the latest streetwear drops from Drift Wears. New collections, limited editions, and style-defining essentials.",
   openGraph: {
     title: "Drift Wears — Premium Streetwear | New Collection Live",
     description:

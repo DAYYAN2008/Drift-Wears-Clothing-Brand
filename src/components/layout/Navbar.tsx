@@ -75,45 +75,6 @@ const navItems: NavItem[] = [
     },
   },
   {
-    label: "WOMEN",
-    href: "/women",
-    megaMenu: {
-      sections: [
-        {
-          title: "New Arrivals",
-          links: [
-            { label: "This Week", count: 36, href: "/women/new-arrivals" },
-            { label: "Minimals Spring '26", count: 18, href: "/women/minimals" },
-          ],
-        },
-        {
-          title: "Clothing",
-          links: [
-            { label: "Knit Tops / Tees", count: 139, href: "/women/tops" },
-            { label: "Shirts / Dresses", count: 115, href: "/women/shirts" },
-            { label: "Denim & Trousers", count: 141, href: "/women/denim" },
-            { label: "Co-ords", count: 150, href: "/women/coords" },
-            { label: "Hoodies", count: 48, href: "/women/hoodies" },
-            { label: "Jackets", count: 29, href: "/women/jackets" },
-          ],
-        },
-        {
-          title: "Accessories",
-          links: [
-            { label: "Bags", count: 48, href: "/women/bags" },
-            { label: "Jewellery", count: 27, href: "/women/jewellery" },
-            { label: "Sunglasses", count: 26, href: "/women/sunglasses" },
-            { label: "Caps / Hats", count: 19, href: "/women/caps" },
-            { label: "Scarves", count: 12, href: "/women/scarves" },
-          ],
-        },
-      ],
-      campaignImage: "/images/products/trousers/Pic-1.0.png",
-      campaignLabel: "New Season Looks",
-      campaignHref: "/women/new-arrivals",
-    },
-  },
-  {
     label: "NEW ARRIVALS",
     href: "/new-arrivals",
     megaMenu: {
@@ -124,14 +85,6 @@ const navItems: NavItem[] = [
             { label: "T-Shirts", count: 28, href: "/men/tshirts" },
             { label: "Shirts", count: 18, href: "/men/shirts" },
             { label: "Co-ords", count: 12, href: "/men/coords" },
-          ],
-        },
-        {
-          title: "Women",
-          links: [
-            { label: "Knit Tops", count: 22, href: "/women/tops" },
-            { label: "Dresses", count: 14, href: "/women/dresses" },
-            { label: "Co-ords", count: 16, href: "/women/coords" },
           ],
         },
         {
