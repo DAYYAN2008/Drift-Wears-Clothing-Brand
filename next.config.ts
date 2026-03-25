@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: [
+    "*.picard.replit.dev",
+    "*.replit.dev",
+  ],
 };
 
 export default nextConfig;

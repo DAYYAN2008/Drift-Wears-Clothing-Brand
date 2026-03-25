@@ -1,0 +1,36 @@
+.strip {
+  width: 100%;
+  background-color: #0a0a0a;
+  overflow: hidden;
+  padding: 14px 0;
+  cursor: default;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+
+.strip:hover .track {
+  animation-play-state: paused;
+}
+
+.text {
+  white-space: nowrap;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding-right: 0;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

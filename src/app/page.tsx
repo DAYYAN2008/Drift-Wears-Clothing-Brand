@@ -1,16 +1,14 @@
 import Hero from "@/components/sections/Hero";
+import MarqueeStrip from "@/components/sections/MarqueeStrip";
+import Editorial from "@/components/sections/Editorial";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-
-      {/* Spacer so scrolling is demonstrable */}
-      <section className="flex h-screen items-center justify-center bg-[var(--color-off-white)]">
-        <p className="text-2xl font-light tracking-wide text-[var(--color-black)]">
-          Content sections coming soon&hellip;
-        </p>
-      </section>
+      {/* FeaturedProducts — coming soon */}
+      <MarqueeStrip />
+      <Editorial />
     </main>
   );
 }
