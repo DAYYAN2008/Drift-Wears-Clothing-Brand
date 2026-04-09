@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import PromoVideo from "@/components/sections/PromoVideo";
 import MarqueeStrip from "@/components/sections/MarqueeStrip";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Editorial from "@/components/sections/Editorial";
@@ -20,6 +21,7 @@ export default function Home() {
     <>
       <Hero />
       <MarqueeStrip />
+      <PromoVideo />
       <FeaturedProducts />
       <Editorial />
     </>
