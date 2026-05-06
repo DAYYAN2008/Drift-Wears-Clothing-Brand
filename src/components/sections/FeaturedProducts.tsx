@@ -55,10 +55,10 @@ export default function FeaturedProducts() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.15 }}
-              className="group flex flex-col"
+              className="flex flex-col h-full w-full relative group"
             >
-              {/* Image */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e4df]">
+              {/* Image Wrapper (Top Section) */}
+              <div className="relative w-full aspect-[4/5] bg-[#f5f5f5] mb-5 overflow-hidden">
                 <Image
                   src={product.images[0]}
                   alt={`${product.name} — men's ${product.category} by Drift Wears`}
@@ -88,22 +88,20 @@ export default function FeaturedProducts() {
                 </div>
               </div>
 
-              {/* Info */}
-              <div className="flex flex-1 flex-col p-4">
-                <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-widest text-[var(--color-gray)]">
-                    {product.category}
-                  </p>
-                  <h3 className="text-sm font-medium leading-snug text-[var(--color-black)]">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm font-semibold text-[var(--color-black)]">
-                    Rs. {product.price.toLocaleString()}
-                  </p>
-                </div>
+              {/* Content Wrapper (Middle Section) */}
+              <div className="flex flex-col flex-1 gap-y-3 px-2">
+                <p className="text-xs tracking-wider text-[var(--color-gray)] uppercase">
+                  {product.category}
+                </p>
+                <h3 className="text-sm font-semibold text-[var(--color-black)] truncate">
+                  {product.name}
+                </h3>
+                <p className="text-sm font-medium text-[var(--color-black)] mb-2">
+                  Rs. {product.price.toLocaleString()}
+                </p>
 
                 {/* Sizes */}
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-1">
                   {product.sizes.slice(0, 4).map((s) => (
                     <span
                       key={s}
@@ -114,7 +112,7 @@ export default function FeaturedProducts() {
                   ))}
                 </div>
 
-                <AddToCartButton product={product} className="mt-4 w-full" />
+                <AddToCartButton product={product} className="w-full mt-auto bg-[var(--color-accent)] text-[var(--color-black)] font-bold tracking-widest text-xs py-4 flex items-center justify-center gap-x-2 transition-opacity hover:opacity-90" />
               </div>
             </motion.div>
           ))}
