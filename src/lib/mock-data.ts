@@ -8,6 +8,8 @@ export interface Product {
   sizes: string[];
   colors: string[];
   tags: string[];
+  isNew?: boolean;
+  isBestseller?: boolean;
 }
 
 export const products: Product[] = [
