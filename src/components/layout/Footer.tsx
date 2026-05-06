@@ -28,7 +28,6 @@ const PinterestIcon = () => (
 
 const shopLinks = [
   { label: "Men", href: "/men" },
-  { label: "Women", href: "/women" },
   { label: "New Arrivals", href: "/new-arrivals" },
   { label: "Sale", href: "/sale" },
   { label: "Accessories", href: "/accessories" },
@@ -64,27 +63,37 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--color-black)]">
-      {/* Gold top border */}
-      <div className="h-[1px] bg-[var(--color-accent)]" />
+      {/* Gold top border with subtle glow */}
+      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-60" />
 
       {/* Main grid */}
-      <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
-        <div className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-12">
+      <div className="mx-auto max-w-[1440px] px-12 py-32 md:px-24 lg:px-40 lg:py-48">
+        <div className="grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-4 lg:gap-32">
 
-          {/* ── Col 1: Brand ── */}
-          <div className="col-span-2 lg:col-span-1">
+          {/* ── Col 1: Brand Identity ── */}
+          <div className="flex flex-col items-start pl-6 pt-6 pr-8">
             <Link
               href="/"
-              className="text-base font-bold uppercase tracking-[0.35em] text-[var(--color-off-white)] transition-opacity hover:opacity-75"
+              className="flex flex-col items-start transition-opacity hover:opacity-75"
             >
-              Drift&nbsp;Wears
+              <span 
+                className="text-2xl font-bold uppercase tracking-[0.45em] leading-none text-[var(--color-off-white)]"
+                style={{ fontFamily: "'ITC Fenice Std Regular', Georgia, serif" }}
+              >
+                Drift&nbsp;Wears
+              </span>
+              <span className="mt-3 whitespace-nowrap text-[8.5px] font-medium uppercase tracking-[0.6em] text-[var(--color-accent)]">
+                Let your style drift
+              </span>
             </Link>
-            <p className="mt-4 max-w-[220px] text-[13px] leading-relaxed text-[var(--color-gray)]">
-              Elevated streetwear essentials crafted for those who move different.
+            
+            <p className="mt-12 max-w-[320px] text-[15px] leading-[1.8] text-[var(--color-gray)]">
+              Elevated streetwear essentials crafted for those who move different. 
+              Designed for the street, refined for the soul.
             </p>
 
             {/* Social icons */}
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-16 flex items-center gap-8">
               {socials.map(({ label, icon: Icon, href }) => (
                 <a
                   key={label}
@@ -92,7 +101,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center text-[var(--color-gray)] transition-colors hover:text-[var(--color-accent)]"
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/5 bg-white/[0.02] text-[var(--color-gray)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:bg-[var(--color-accent)]/5 hover:text-[var(--color-accent)]"
                 >
                   <Icon />
                 </a>
@@ -101,16 +110,16 @@ export default function Footer() {
           </div>
 
           {/* ── Col 2: Shop ── */}
-          <div>
-            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
+          <div className="lg:pl-12">
+            <h4 className="mb-12 text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)]">
               Shop
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-6">
               {shopLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[15px] leading-relaxed text-[var(--color-gray)] transition-all duration-300 hover:translate-x-1.5 hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -120,16 +129,16 @@ export default function Footer() {
           </div>
 
           {/* ── Col 3: Help ── */}
-          <div>
-            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
-              Help
+          <div className="lg:pl-12">
+            <h4 className="mb-12 text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)]">
+              Support
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-6">
               {helpLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[15px] leading-relaxed text-[var(--color-gray)] transition-all duration-300 hover:translate-x-1.5 hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -139,16 +148,16 @@ export default function Footer() {
           </div>
 
           {/* ── Col 4: Company ── */}
-          <div>
-            <h4 className="mb-6 text-[10.5px] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
-              Company
+          <div className="lg:pl-12">
+            <h4 className="mb-12 text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)]">
+              Brand
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-6">
               {companyLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[13px] leading-relaxed text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]"
+                    className="text-[15px] leading-relaxed text-[var(--color-gray)] transition-all duration-300 hover:translate-x-1.5 hover:text-[var(--color-off-white)]"
                   >
                     {label}
                   </Link>
@@ -160,16 +169,16 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-6 py-4 md:flex-row md:justify-between lg:px-12">
-          <p className="text-[11px] text-[var(--color-gray)]">
+      <div className="border-t border-white/[0.05]">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-12 px-12 py-16 md:flex-row md:justify-between md:px-24 lg:px-40">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-gray)]/60">
             &copy; {year} Drift Wears. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-6">
             {paymentMethods.map((method) => (
               <span
                 key={method}
-                className="rounded-sm border border-white/[0.12] bg-white/[0.04] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider text-[var(--color-gray)]"
+                className="rounded-sm border border-white/[0.08] bg-white/[0.02] px-4 py-2 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gray)]/80"
               >
                 {method}
               </span>

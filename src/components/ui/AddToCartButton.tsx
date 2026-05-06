@@ -33,7 +33,7 @@ export default function AddToCartButton({
       price: product.price,
       size,
       color,
-      image: `https://picsum.photos/seed/${product.id}/150/200?grayscale`,
+      image: product.images[0],
     });
     openCart();
     setAdded(true);

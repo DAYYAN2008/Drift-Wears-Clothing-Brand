@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import PromoVideo from "@/components/sections/PromoVideo";
 import MarqueeStrip from "@/components/sections/MarqueeStrip";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import Editorial from "@/components/sections/Editorial";
-import Newsletter from "@/components/sections/Newsletter";
 
 export const metadata: Metadata = {
   title: "Drift Wears — Premium Streetwear",
   description:
-    "Shop the latest streetwear drops from Drift Wears. New collections, limited editions, and style-defining essentials for men and women.",
+    "Shop the latest streetwear drops from Drift Wears. New collections, limited editions, and style-defining essentials.",
   openGraph: {
     title: "Drift Wears — Premium Streetwear | New Collection Live",
     description:
@@ -21,9 +21,9 @@ export default function Home() {
     <>
       <Hero />
       <MarqueeStrip />
+      <PromoVideo />
       <FeaturedProducts />
       <Editorial />
-      <Newsletter />
     </>
   );
 }

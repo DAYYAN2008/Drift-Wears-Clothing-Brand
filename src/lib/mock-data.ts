@@ -3,11 +3,11 @@ export interface Product {
   name: string;
   category: string;
   price: number;
+  originalPrice: number | null;
   images: string[];
   sizes: string[];
   colors: string[];
-  isNew: boolean;
-  isBestseller: boolean;
+  tags: string[];
 }
 
 export const products: Product[] = [

@@ -69,48 +69,9 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/men-campaign/600/800",
+      campaignImage: "/images/products/tracksuits/Pic-1.0.png",
       campaignLabel: "Minimals Spring '26",
       campaignHref: "/men/minimals",
-    },
-  },
-  {
-    label: "WOMEN",
-    href: "/women",
-    megaMenu: {
-      sections: [
-        {
-          title: "New Arrivals",
-          links: [
-            { label: "This Week", count: 36, href: "/women/new-arrivals" },
-            { label: "Minimals Spring '26", count: 18, href: "/women/minimals" },
-          ],
-        },
-        {
-          title: "Clothing",
-          links: [
-            { label: "Knit Tops / Tees", count: 139, href: "/women/tops" },
-            { label: "Shirts / Dresses", count: 115, href: "/women/shirts" },
-            { label: "Denim & Trousers", count: 141, href: "/women/denim" },
-            { label: "Co-ords", count: 150, href: "/women/coords" },
-            { label: "Hoodies", count: 48, href: "/women/hoodies" },
-            { label: "Jackets", count: 29, href: "/women/jackets" },
-          ],
-        },
-        {
-          title: "Accessories",
-          links: [
-            { label: "Bags", count: 48, href: "/women/bags" },
-            { label: "Jewellery", count: 27, href: "/women/jewellery" },
-            { label: "Sunglasses", count: 26, href: "/women/sunglasses" },
-            { label: "Caps / Hats", count: 19, href: "/women/caps" },
-            { label: "Scarves", count: 12, href: "/women/scarves" },
-          ],
-        },
-      ],
-      campaignImage: "https://picsum.photos/seed/women-campaign/600/800",
-      campaignLabel: "New Season Looks",
-      campaignHref: "/women/new-arrivals",
     },
   },
   {
@@ -127,14 +88,6 @@ const navItems: NavItem[] = [
           ],
         },
         {
-          title: "Women",
-          links: [
-            { label: "Knit Tops", count: 22, href: "/women/tops" },
-            { label: "Dresses", count: 14, href: "/women/dresses" },
-            { label: "Co-ords", count: 16, href: "/women/coords" },
-          ],
-        },
-        {
           title: "Trending Now",
           links: [
             { label: "Staff Picks", count: 20, href: "/trending/staff-picks" },
@@ -143,7 +96,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/arrivals-campaign/600/800",
+      campaignImage: "/images/products/shirts/Pic-1.0.png",
       campaignLabel: "Just Dropped",
       campaignHref: "/new-arrivals",
     },
@@ -179,7 +132,7 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      campaignImage: "https://picsum.photos/seed/sale-campaign/600/800",
+      campaignImage: "/images/products/trousers/Pic-2.1.png",
       campaignLabel: "Up to 70% off",
       campaignHref: "/sale",
     },
@@ -267,20 +220,27 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+        className={`sticky top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
             ? "bg-[var(--color-black)]/98 backdrop-blur-md shadow-[0_1px_0_rgba(255,255,255,.06)]"
             : "bg-[var(--color-black)]"
-        }`}
+          }`}
       >
         <nav className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between px-10 lg:px-20">
 
           {/* ─── Logo ─── */}
           <Link
             href="/"
-            className="relative z-10 text-base font-bold uppercase tracking-[0.35em] text-[var(--color-off-white)] transition-opacity hover:opacity-75"
+            className="flex flex-col items-center text-center transition-opacity hover:opacity-75"
           >
-            Drift&nbsp;Wears
+            <span
+              className="text-lg font-bold uppercase tracking-[0.45em] leading-none text-[var(--color-off-white)]"
+              style={{ fontFamily: "'ITC Fenice Std Regular', Georgia, serif" }}
+            >
+              Drift&nbsp;Wears
+            </span>
+            <span className="mt-1 text-[7px] font-medium uppercase tracking-[0.5em] text-[var(--color-accent)]">
+              Let your style drift
+            </span>
           </Link>
 
           {/* ─── Desktop Nav Links ─── */}
@@ -294,20 +254,18 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`group relative flex items-center h-full text-[12.5px] font-medium uppercase tracking-[0.12em] transition-colors ${
-                    item.highlight
+                  className={`group relative flex items-center h-full text-[12.5px] font-medium uppercase tracking-[0.12em] transition-colors ${item.highlight
                       ? "text-[var(--color-accent)]"
                       : activeMenu === item.label
-                      ? "text-[var(--color-off-white)]"
-                      : "text-[var(--color-gray)] hover:text-[var(--color-off-white)]"
-                  }`}
+                        ? "text-[var(--color-off-white)]"
+                        : "text-[var(--color-gray)] hover:text-[var(--color-off-white)]"
+                    }`}
                 >
                   {item.label}
                   {/* Active/hover underline */}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[var(--color-accent)] transition-all duration-300 ease-out ${
-                      activeMenu === item.label ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
+                    className={`absolute bottom-0 left-0 h-[2px] bg-[var(--color-accent)] transition-all duration-300 ease-out ${activeMenu === item.label ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
                   />
                 </Link>
               </li>
@@ -356,69 +314,64 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute left-0 w-full border-t border-white/[0.07] bg-[var(--color-black)]/98 backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+              className="absolute top-full left-0 w-full bg-[var(--color-black)] border-t border-[#1a1a1a] shadow-2xl"
               onMouseEnter={() => {
                 if (leaveTimer.current) clearTimeout(leaveTimer.current);
               }}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="mx-auto flex max-w-[1440px] gap-0 px-12">
-                {/* ── Left: category columns ── */}
-                <div className="flex flex-1 gap-12 py-12">
+              <div className="max-w-[1440px] mx-auto px-10 lg:px-20 py-12">
+                <div className="grid grid-cols-[1.5fr_1.5fr_1.5fr_auto] gap-x-12">
+                  {/* Category Columns */}
                   {navItems
                     .find((n) => n.label === activeMenu)
                     ?.megaMenu?.sections.map((section) => (
-                      <div key={section.title} className="flex-1 min-w-[160px] space-y-3">
-                        <h4 className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">
+                      <div key={section.title}>
+                        <h4 className="text-sm font-semibold tracking-widest text-[var(--color-accent)] mb-2 uppercase">
                           {section.title}
                         </h4>
-                        <ul className="mt-6 space-y-5">
+                        <div className="flex flex-col gap-y-4">
                           {section.links.map((link) => (
-                            <li key={link.label}>
-                              <Link
-                                href={link.href}
-                                className="group flex items-baseline gap-1.5 text-[13.5px] text-[var(--color-gray)] transition-colors duration-150 hover:text-[var(--color-off-white)]"
-                              >
-                                {link.label}
-                                {link.count !== undefined && (
-                                  <sup className="text-[9px] text-[var(--color-gray)]/50 transition-colors duration-150 group-hover:text-[var(--color-gray)]">
-                                    {link.count}
-                                  </sup>
-                                )}
-                              </Link>
-                            </li>
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              className="text-[var(--color-gray)] hover:text-[var(--color-accent)] transition-colors duration-200 flex justify-between items-center"
+                            >
+                              <span>{link.label}</span>
+                              {link.count !== undefined && (
+                                <span className="text-xs opacity-50 font-mono">
+                                  {link.count}
+                                </span>
+                              )}
+                            </Link>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     ))}
-                </div>
 
-                {/* ── Right: campaign image ── */}
-                {(() => {
-                  const campaign = navItems.find((n) => n.label === activeMenu)?.megaMenu;
-                  if (!campaign) return null;
-                  return (
-                    <Link
-                      href={campaign.campaignHref}
-                      className="group relative my-4 ml-8 w-[280px] shrink-0 overflow-hidden rounded-xl"
-                    >
-                      <div className="relative h-full w-full overflow-hidden rounded-xl">
+                  {/* Campaign Image */}
+                  {(() => {
+                    const campaign = navItems.find((n) => n.label === activeMenu)?.megaMenu;
+                    if (!campaign) return null;
+                    return (
+                      <Link
+                        href={campaign.campaignHref}
+                        className="col-start-4 justify-self-end group block relative w-[320px] aspect-[3/4] rounded-lg overflow-hidden"
+                      >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={campaign.campaignImage}
                           alt={campaign.campaignLabel}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
                         />
-                        {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                        {/* Label */}
                         <span className="absolute bottom-4 left-4 right-4 text-[12px] font-semibold uppercase tracking-widest text-white">
                           {campaign.campaignLabel}
                         </span>
-                      </div>
-                    </Link>
-                  );
-                })()}
+                      </Link>
+                    );
+                  })()}
+                </div>
               </div>
             </motion.div>
           )}
@@ -446,9 +399,17 @@ export default function Navbar() {
             >
               {/* Header */}
               <div className="flex h-[68px] items-center justify-between border-b border-white/[0.06] px-6">
-                <span className="text-sm font-bold uppercase tracking-[0.35em] text-[var(--color-off-white)]">
-                  Drift&nbsp;Wears
-                </span>
+                <div className="flex flex-col items-center">
+                  <span
+                    className="text-base font-bold uppercase tracking-[0.4em] leading-none text-[var(--color-off-white)]"
+                    style={{ fontFamily: "'ITC Fenice Std Regular', Georgia, serif" }}
+                  >
+                    Drift&nbsp;Wears
+                  </span>
+                  <span className="mt-0.5 text-[6px] font-medium uppercase tracking-[0.4em] text-[var(--color-accent)]">
+                    Let your style drift
+                  </span>
+                </div>
                 <button aria-label="Close menu" onClick={closeMobile} className="text-[var(--color-gray)] transition-colors hover:text-[var(--color-off-white)]">
                   <X size={22} strokeWidth={1.5} />
                 </button>
@@ -466,9 +427,8 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       onClick={closeMobile}
-                      className={`block py-3.5 text-xl font-semibold uppercase tracking-[0.15em] transition-colors hover:text-[var(--color-accent)] ${
-                        item.highlight ? "text-[var(--color-accent)]" : "text-[var(--color-off-white)]"
-                      }`}
+                      className={`block py-3.5 text-xl font-semibold uppercase tracking-[0.15em] transition-colors hover:text-[var(--color-accent)] ${item.highlight ? "text-[var(--color-accent)]" : "text-[var(--color-off-white)]"
+                        }`}
                     >
                       {item.label}
                     </Link>
