@@ -6,7 +6,7 @@ import AddToCartButton from "@/components/ui/AddToCartButton";
 import FadeInWhenVisible from "@/components/ui/FadeInWhenVisible";
 import { products } from "@/lib/mock-data";
 
-const featured = products.slice(0, 4);
+const featured = products.filter((p) => ["1", "5", "9", "6"].includes(p.id));
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -55,25 +55,32 @@ export default function FeaturedProducts() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.15 }}
-              className="group flex flex-col"
+              className="flex flex-col h-full w-full relative group"
             >
-              {/* Image */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e4df]">
+              {/* Image Wrapper (Top Section) */}
+              <div className="relative w-full aspect-[4/5] bg-[#f5f5f5] mb-5 overflow-hidden">
                 <Image
-                  src={`https://picsum.photos/seed/${product.id}/480/640?grayscale`}
-                  alt={product.name}
+                  src={product.images[0]}
+                  alt={`${product.name} — men's ${product.category} by Drift Wears`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
                 />
+                <Image
+                  src={product.images[1]}
+                  alt={`${product.name} — alternate view`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="absolute inset-0 object-cover opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+                />
                 {/* Badges */}
                 <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-                  {product.isNew && (
+                  {product.tags.includes("new") && (
                     <span className="bg-[var(--color-black)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white">
                       New
                     </span>
                   )}
-                  {product.isBestseller && (
+                  {product.tags.includes("bestseller") && (
                     <span className="bg-[var(--color-accent)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-[var(--color-black)]">
                       Bestseller
                     </span>
@@ -81,22 +88,20 @@ export default function FeaturedProducts() {
                 </div>
               </div>
 
-              {/* Info */}
-              <div className="flex flex-1 flex-col p-4">
-                <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-widest text-[var(--color-gray)]">
-                    {product.category}
-                  </p>
-                  <h3 className="text-sm font-medium leading-snug text-[var(--color-black)]">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm font-semibold text-[var(--color-black)]">
-                    ₹{product.price.toLocaleString()}
-                  </p>
-                </div>
+              {/* Content Wrapper (Middle Section) */}
+              <div className="flex flex-col flex-1 gap-y-3 px-2">
+                <p className="text-xs tracking-wider text-[var(--color-gray)] uppercase">
+                  {product.category}
+                </p>
+                <h3 className="text-sm font-semibold text-[var(--color-black)] truncate">
+                  {product.name}
+                </h3>
+                <p className="text-sm font-medium text-[var(--color-black)] mb-2">
+                  Rs. {product.price.toLocaleString()}
+                </p>
 
                 {/* Sizes */}
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-1">
                   {product.sizes.slice(0, 4).map((s) => (
                     <span
                       key={s}
@@ -107,7 +112,7 @@ export default function FeaturedProducts() {
                   ))}
                 </div>
 
-                <AddToCartButton product={product} className="mt-4 w-full" />
+                <AddToCartButton product={product} className="w-full mt-auto bg-[var(--color-accent)] text-[var(--color-black)] font-bold tracking-widest text-xs py-4 flex items-center justify-center gap-x-2 transition-opacity hover:opacity-90" />
               </div>
             </motion.div>
           ))}

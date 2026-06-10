@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     template: "%s | Drift Wears",
   },
   description:
-    "Elevated streetwear essentials crafted for those who move different. Shop men's and women's new arrivals, limited drops, and exclusive collections.",
-  keywords: ["streetwear", "fashion", "clothing", "men", "women", "new arrivals", "limited edition"],
+    "Elevated streetwear essentials crafted for those who move different. Shop men's new arrivals, limited drops, and exclusive collections.",
+  keywords: ["streetwear", "fashion", "clothing", "men", "new arrivals", "limited edition"],
   openGraph: {
     title: "Drift Wears — Premium Streetwear",
     description: "Elevated streetwear essentials crafted for those who move different.",

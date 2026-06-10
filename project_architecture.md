@@ -9,14 +9,15 @@ This document provides a comprehensive overview of the "Drift Wears" project. Fe
 **Goal:** Build a premium, high-end streetwear e-commerce storefront with smooth scroll interactions, dynamic animations, and responsive layouts.
 
 **Core Stack:**
-*   **Framework:** Next.js 14+ (using the heavily-optimized `App Router` architecture)
+*   **Framework:** Next.js 16+ (using the heavily-optimized `App Router` architecture)
 *   **Language:** TypeScript (Strict Mode)
 *   **Styling:** Tailwind CSS v4 (using the modern `@theme inline` configuration strategy)
 *   **Animations:** Framer Motion (v12) for layout transitions, scroll parallax, and micro-interactions
+*   **State Management:** Zustand (for client-side store like Shopping Cart)
 *   **Additional UI Libs:**
     *   `lucide-react` (SVG icons)
-    *   `@headlessui/react` (for complex, accessible unstyled components, though currently, pure functional components + Framer Motion are preferred)
-    *   `swiper` (for upcoming product carousels)
+    *   `@headlessui/react` (for complex, accessible unstyled components)
+    *   `swiper` (for product carousels)
 
 ---
 
@@ -44,19 +45,27 @@ src/
 ├── app/
 │   ├── (routes)/          # Dedicated route groups (e.g., /men, /women, /sale)
 │   ├── globals.css        # Theming, CSS Reset, Tailwind imports
-│   ├── layout.tsx         # Global RootLayout (houses <AnnouncementBar /> and <Navbar />)
-│   └── page.tsx           # Homepage (currently houses the <Hero /> component and spacer)
+│   ├── layout.tsx         # Global RootLayout (houses <AnnouncementBar />, <Navbar />, <CartDrawer />)
+│   └── page.tsx           # Homepage (houses Hero, Featured Products, Promo Video, etc.)
 ├── components/
 │   ├── layout/            # Site-wide structural components
 │   │   ├── Navbar.tsx     # The primary sticky navigation bar
-│   │   └── AnnouncementBar.tsx # Top promotional banner
-│   ├── sections/          # Large Page-level components (e.g., Homepage sections)
-│   │   └── Hero.tsx       # Full-height parallax hero section
-│   └── ui/                # Small, generic reusable atoms (buttons, inputs) - To Be Built
+│   │   ├── AnnouncementBar.tsx # Top promotional banner
+│   │   ├── CartDrawer.tsx # Slide-out shopping cart
+│   │   └── Footer.tsx     # Site-wide footer
+│   ├── sections/          # Large Page-level components
+│   │   ├── Hero.tsx       # Full-height parallax hero section
+│   │   ├── FeaturedProducts.tsx # Product grid with filters
+│   │   ├── PromoVideo.tsx # Cinematic video section
+│   │   ├── MarqueeStrip.tsx # Scrolling text banner
+│   │   └── Editorial.tsx  # Brand storytelling section
+│   └── ui/                # Small, generic reusable atoms (buttons, inputs)
 └── lib/
-    └── mock-data.ts       # Central source of truth for mock products and categories
+    ├── mock-data.ts       # Central source of truth for mock products and categories
+    └── store/
+        └── cart.ts        # Zustand store for shopping cart state
 public/
-└── images/                # Local static images (campaigns, product placeholders)
+└── images/                # Local static images (campaigns, products)
 ```
 
 ---
@@ -64,22 +73,26 @@ public/
 ## 4. Key Architectural Patterns & Implementations
 
 ### A. Root Layout Injection ([src/app/layout.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/app/layout.tsx))
-Both [AnnouncementBar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/AnnouncementBar.tsx#7-35) and [Navbar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/Navbar.tsx#234-496) are rendered directly inside [layout.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/app/layout.tsx) before `{children}`.
-*   This ensures the navigation state is preserved across route changes.
-*   The `pages` (like [page.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/app/page.tsx)) start underneath the navigation flow. The [Navbar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/Navbar.tsx#234-496) is `sticky`/`fixed`, and elements respect its height or sit behind it (like the [Hero](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/sections/Hero.tsx#28-121)).
+Global UI elements are injected at the root level:
+*   [AnnouncementBar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/AnnouncementBar.tsx), [Navbar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/Navbar.tsx), and [CartDrawer](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/CartDrawer.tsx) are present on every page.
+*   State management (Zustand) allows the [Navbar](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/Navbar.tsx) to reflect the cart count in real-time.
 
 ### B. Navbar Component ([src/components/layout/Navbar.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/layout/Navbar.tsx))
-A highly complex, 500-line responsive navigation component.
-*   **Desktop:** Uses hover mechanics to render a massive "Mega Dropdown." The dropdown relies on `navItems` configuration objects that hold complex sub-links, notification counts, and dynamic campaign image URLs.
-*   **Mobile:** Uses a Framer Motion `AnimatePresence` slide-in panel (`z-[60]`) with an animated dark backdrop overlay. Links are staggered incrementally using `staggerChildren`.
-*   **Scroll State:** Detects `window.scrollY > 60` to transition from an absolutely positioned transparent background (over top of the Hero) to a solid `bg-[var(--color-black)]/98` with a blur filter.
+*   **Desktop Mega Menu:** Uses hover triggers to display full-width dropdowns with category columns and campaign images.
+*   **Scroll Logic:** Dynamically transitions from transparent to a solid backdrop-blur style once the user scrolls past 60px.
+*   **Strict Alignment:** Dropdowns use `top-full` to perfectly align with the bottom of the sticky navbar.
 
-### C. Hero Section ([src/components/sections/Hero.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/components/sections/Hero.tsx))
-*   **Parallax Effect:** Uses Framer Motion's `useScroll` mapped to `useTransform` to move a background image natively at half the speed of the user's scroll (`["0%", "50%"]`).
-*   **Entry Strategy:** Uses `staggerChildren` to fade text lines upward (`fadeUp` variant) sequentially upon initial load.
+### C. Homepage Sectioning ([src/app/page.tsx](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/app/page.tsx))
+The homepage is a composition of several high-impact sections:
+1.  **Hero:** Parallax background with staggered text entry.
+2.  **MarqueeStrip:** Infinite horizontal scroll banner.
+3.  **PromoVideo:** Full-width cinematic video integration.
+4.  **FeaturedProducts:** Dynamic grid displaying trending items.
+5.  **Editorial:** Large-scale image and text layout for brand identity.
 
-### D. Centralized Data ([src/lib/mock-data.ts](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/lib/mock-data.ts))
-Currently, no external database or CMS is attached. Everything is powered by typed mock data. The application relies on [Product](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/lib/mock-data.ts#1-12) arrays defining `id, name, category, price, images, sizes, colors, isNew, isBestseller`. All UI components loop through data modeled after this structure.
+### D. State Management & Data
+*   **Zustand ([src/lib/store/cart.ts](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/lib/store/cart.ts)):** Manages the global cart state, item quantities, and drawer visibility.
+*   **Mock Data ([src/lib/mock-data.ts](file:///c:/Users/yaaas/Desktop/Drift%20Wears/src/lib/mock-data.ts)):** Defines the `Product` schema and exports the main product catalog used across the site.
 
 ---
 
